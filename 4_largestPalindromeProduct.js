@@ -32,8 +32,10 @@ function largestPalindrome(multiplierDigitLimit){
             
             let product = firstMultiplier * secondMultiplier
 
+            // check if the product of multipliers is palindrome
             if(isNumberPalindrome(product)){
 
+                // if new palindrome is bigger than current, store it and it's multipliers
                 if(largestPalindrome < product){
                     largestPalindrome = product
                     firstMultiplierForLargestPalindrome = firstMultiplier
@@ -48,4 +50,5 @@ function largestPalindrome(multiplierDigitLimit){
     console.log("The largest palindrome made from two " + multiplierDigitLimit + "-digit numbers is: " + firstMultiplierForLargestPalindrome + " x " + secondMultiplierForLargestPalindrome + " = " + largestPalindrome)
 }
 
+// run function
 largestPalindrome(3)
