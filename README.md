@@ -1,1 +1,1 @@
-# coding_challenges_projecteuler
+## Coding challenges from ProjectEuler website
