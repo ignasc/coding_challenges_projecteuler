@@ -26,7 +26,7 @@ function squareOfSum(number){
     return result**2
 }
 
-// function to find different between square of sum and sum of squares
+// function to find the difference between square of sum and the sum of squares
 function sumSquareDiff(number){
     let squareOfSumResult = squareOfSum(number)
     let sumOfSquaresResult = sumOfSquares(number)
