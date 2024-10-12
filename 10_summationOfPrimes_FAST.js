@@ -67,13 +67,12 @@ function main(){
             if(dataArray[i] > 0){
                 resultSum += dataArray[i]
             }
-            
+
         }
         
         console.log("The sum of all prime numbers up to " + numberOfDataPoints + " is: " + resultSum)
         endTime = Date.now()
         console.log("Operation completed in " + (endTime - startTime)/1000 + " seconds")
-        resultSum = 0 // reset the sum (delete once both calculation methods are separated
 
 }
 
