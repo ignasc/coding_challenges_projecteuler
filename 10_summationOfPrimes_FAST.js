@@ -44,8 +44,11 @@ function main(){
 
     // iterate through every number that is not flagged as negative (not a prime)
     for(let numberIndex = 0; numberIndex <= iterationLimit; numberIndex++){
+
         if(dataArray[numberIndex] < 0){continue}// if it is flagged as NOT prime, skip it
+
             let numberIsPrime = isPrimeNumber(dataArray[numberIndex])
+
             // check if number is prime
             if(numberIsPrime){
                 let primeNumber = dataArray[numberIndex]
@@ -60,9 +63,11 @@ function main(){
         
         // add up all prime numbers (the ones that are not flagged as -1)
         for(let i = 0; i < dataArray.length; i++){
+
             if(dataArray[i] > 0){
                 resultSum += dataArray[i]
             }
+            
         }
         
         console.log("The sum of all prime numbers up to " + numberOfDataPoints + " is: " + resultSum)
