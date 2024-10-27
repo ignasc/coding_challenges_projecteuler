@@ -34,18 +34,18 @@ function formatGridForPrintout(result){
 
     // starting header for the table with column numbering
     let stringGrid = "Column > |  0 |  1 |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 | 10 | 11 | 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 |\n   Row v |---------------------------------------------------------------------------------------------------|\n"
-
     // loop through all rows in the number array
     for(let row = 0; row < numberGrid.length; row++){
+
         // start each row offset to the right to align with column arrow
         let rowArray = "      "
         //add row number and spacing so each row begins alligned with column arrow. If row number is single digit, add a single space before it
         rowArray += (row <= 9 ? " " : "") + row + " |"
         // loop through every column in the number grid
         for(let column = 0; column < numberGrid[row].length; column++){
-        // check if the number at grid coordinates (row, column) is one of the numbers that belong to product result
-        let numberIsResult = (row == result.row1 && column == result.col1) || (row == result.row2 && column == result.col2) || (row == result.row3 && column == result.col3) || (row == result.row4 && column == result.col4)
-        // format the number based on whether it is single/double digit and whether belongs to product result or not.
+            // check if the number at grid coordinates (row, column) is one of the numbers that belong to product result
+            let numberIsResult = (row == result.row1 && column == result.col1) || (row == result.row2 && column == result.col2) || (row == result.row3 && column == result.col3) || (row == result.row4 && column == result.col4)
+            // format the number based on whether it is single/double digit and whether belongs to product result or not.
             if(numberIsResult){
                 rowArray += (numberGrid[row][column] <= 9 ? "| " : "|") + numberGrid[row][column] + "| "
             } else {
@@ -54,47 +54,44 @@ function formatGridForPrintout(result){
         }
         // replace the last space in the row with a table border and a new line and add this string to the whole table string.
         stringGrid += rowArray.slice(0, rowArray.length - 1) + "|\n"
-    }
-    return stringGrid
 
+    }
+
+    return stringGrid
 }
 
 function checkGridValidity(row, column){
     /*
     Function to check if we do not go outside of grid when checking for adjacent numbers.
 
-    We first check if the row does not go out of bounds and then we check if column in that row does not go out of bounds. If we check both at the same time, then program throws an error when row is out of bounds, results numberGrid[row] returning undefined and then program attempts to check undefined[column].
+    We first check if the row does not go out of bounds and then we check if column in that row does not go out of bounds. If we check both at the same time, then program throws an error when row is out of bounds, because when row is out of bounds, then numberGrid[row][column] first returns undefined[column] and this one results in error, since undefined is not an array.
     */
+
     if( numberGrid[row] ){
         return numberGrid[row][column] ? true : false
     }
+
     return false
 
 }
 
-function checkVertical(row, column){
+function calculateProduct(row1, row2, row3, row4, col1, col2, col3, col4, directionString){
     /*
-    function to check the highest product of 4 digits vertically in grid
+    function to calculate the product of 4 digits in a defined direction
     */
-   let result = {}
-   let row1 = row
-   let row2 = row - 1
-   let row3 = row - 2
-   let row4 = row - 3
-   let col1 = column
-   let col2 = column
-   let col3 = column
-   let col4 = column
 
-   // check if we have 4 numbers vertically up
+    let result = {}
+
+    // check if we do not go out of array bounds
     if( checkGridValidity(row4, col4) ){
+
         let numberProduct = numberGrid[row1][col1] * numberGrid[row2][col2] * numberGrid[row3][col3] * numberGrid[row4][col4]
         result.product = numberProduct
         result.number1 = numberGrid[row1][col1]
         result.number2 = numberGrid[row2][col2]
         result.number3 = numberGrid[row3][col3]
         result.number4 = numberGrid[row4][col4]
-        result.direction = "vertically up"
+        result.direction = directionString
         result.row1 = row1
         result.col1 = col1
         result.row2 = row2
@@ -105,45 +102,52 @@ function checkVertical(row, column){
         result.col4 = col4
     }
 
-    row1 = row
-    row2 = row + 1
-    row3 = row + 2
-    row4 = row + 3
-    col1 = column
-    col2 = column
-    col3 = column
-    col4 = column
-    // check if we have 4 numbers vertically down and compare result to previous one
-    if( checkGridValidity(row4, col4) ){
-        let numberProduct = numberGrid[row1][col1] * numberGrid[row2][col2] * numberGrid[row3][col3] * numberGrid[row4][col4]
-        
-        if(numberProduct > result.product){
-            result.product = numberProduct
-            result.number1 = numberGrid[row1][col1]
-            result.number2 = numberGrid[row2][col2]
-            result.number3 = numberGrid[row3][col3]
-            result.number4 = numberGrid[row4][col4]
-            result.direction = "vertically down"
-            result.row1 = row1
-            result.col1 = col1
-            result.row2 = row2
-            result.col2 = col2
-            result.row3 = row3
-            result.col3 = col3
-            result.row4 = row4
-            result.col4 = col4
-        }
-    }
     return result
 
 }
 
-function checkHorizontal(row, column){
+function calculateProductVertical(row, column){
     /*
-    function to check the highest product of 4 digits horizontally in grid
+    function to calculate the highest product of 4 digits vertically in grid
     */
+
     let result = {}
-    
+    let resultCurrent = {}
+    // calculate the product of 4 numbers vertically up
+    let row1 = row
+    let row2 = row - 1
+    let row3 = row - 2
+    let row4 = row - 3
+    let col1 = column
+    let col2 = column
+    let col3 = column
+    let col4 = column
+
+    result = calculateProduct(row1, row2, row3, row4, col1, col2, col3, col4, "vertically up")
+
+    // calculate the product of 4 numbers vertically down and compare result to previous one and save it if product is higher than previous result
+    row2 = row + 1
+    row3 = row + 2
+    row4 = row + 3
+
+    resultCurrent = calculateProduct(row1, row2, row3, row4, col1, col2, col3, col4, "vertically down")
+
+    if(resultCurrent.product > result.product){
+        result = resultCurrent
+    }
+
+    return result
+
+}
+
+function calculateProductHorizontal(row, column){
+    /*
+    function to calculate the highest product of 4 digits horizontally in grid
+    */
+
+    let result = {}
+    let resultCurrent = {}
+    // calculate the product of 4 numbers horizontally left
     let row1 = row
     let row2 = row
     let row3 = row
@@ -153,67 +157,31 @@ function checkHorizontal(row, column){
     let col3 = column - 2
     let col4 = column - 3
 
-    // check if we have 4 numbers horizontally left
+    result = calculateProduct(row1, row2, row3, row4, col1, col2, col3, col4, "horizontally left")
 
-    if( checkGridValidity(row4, col4) ){
-        let numberProduct = numberGrid[row1][col1] * numberGrid[row2][col2] * numberGrid[row3][col3] * numberGrid[row4][col4]
-        result.product = numberProduct
-        result.number1 = numberGrid[row1][col1]
-        result.number2 = numberGrid[row2][col2]
-        result.number3 = numberGrid[row3][col3]
-        result.number4 = numberGrid[row4][col4]
-        result.direction = "horizontally left"
-        result.row1 = row1
-        result.col1 = col1
-        result.row2 = row2
-        result.col2 = col2
-        result.row3 = row3
-        result.col3 = col3
-        result.row4 = row4
-        result.col4 = col4
-    }
-    
-    row1 = row
-    row2 = row
-    row3 = row
-    row4 = row
-    col1 = column
+    // calculate the product of 4 numbers horizontally right and compare result to previous one and save it if product is higher than previous result
     col2 = column + 1
     col3 = column + 2
     col4 = column + 3
 
-    // check if we have 4 numbers horizontally right and compare result to previous one
-    if( checkGridValidity(row4, col4) ){
-        let numberProduct = numberGrid[row1][col1] * numberGrid[row2][col2] * numberGrid[row3][col3] * numberGrid[row4][col4]
-        
-        if(numberProduct > result.product){
-            result.product = numberProduct
-            result.number1 = numberGrid[row1][col1]
-            result.number2 = numberGrid[row2][col2]
-            result.number3 = numberGrid[row3][col3]
-            result.number4 = numberGrid[row4][col4]
-            result.direction = "horizontally right"
-            result.row1 = row1
-            result.col1 = col1
-            result.row2 = row2
-            result.col2 = col2
-            result.row3 = row3
-            result.col3 = col3
-            result.row4 = row4
-            result.col4 = col4
-        }
-        
+    resultCurrent = calculateProduct(row1, row2, row3, row4, col1, col2, col3, col4, "horizontally right")
+
+    if(resultCurrent.product > result.product){
+        result = resultCurrent
     }
+
     return result
 
 }
 
-function checkDiagonal(row, column){
+function calculateProductDiagonal(row, column){
     /*
-    function to check the highest product of 4 digits diagonally in grid
+    function to calculate the highest product of 4 digits diagonally in grid
     */
-    let result = {}
 
+    let result = {}
+    let resultCurrent = {}
+    // calculate the product of 4 numbers diagonally up and right
     let row1 = row
     let row2 = row - 1
     let row3 = row - 2
@@ -223,121 +191,41 @@ function checkDiagonal(row, column){
     let col3 = column + 2
     let col4 = column + 3
 
-    // check if we have 4 numbers diagonally up and right
-    if( checkGridValidity(row4, col4) ){
-        let numberProduct = numberGrid[row1][col1] * numberGrid[row2][col2] * numberGrid[row3][col3] * numberGrid[row4][col4]
-        result.product = numberProduct
-        result.number1 = numberGrid[row1][col1]
-        result.number2 = numberGrid[row2][col2]
-        result.number3 = numberGrid[row3][col3]
-        result.number4 = numberGrid[row4][col4]
-        result.direction = "diagonally up and right"
-        result.row1 = row1
-        result.col1 = col1
-        result.row2 = row2
-        result.col2 = col2
-        result.row3 = row3
-        result.col3 = col3
-        result.row4 = row4
-        result.col4 = col4
-    }
+    result = calculateProduct(row1, row2, row3, row4, col1, col2, col3, col4, "diagonally up and right")
 
-    row1 = row
+    // calculate the product of 4 numbers diagonally right and down and save it if product is higher than previous result
     row2 = row + 1
     row3 = row + 2
     row4 = row + 3
-    col1 = column
-    col2 = column + 1
-    col3 = column + 2
-    col4 = column + 3
 
-    // check if we have 4 numbers diagonally right and down
-    if( checkGridValidity(row4, col4) ){
-        let numberProduct = numberGrid[row1][col1] * numberGrid[row2][col2] * numberGrid[row3][col3] * numberGrid[row4][col4]
-        
-        if(numberProduct > result.product){
-            result.product = numberProduct
-            result.number1 = numberGrid[row1][col1]
-            result.number2 = numberGrid[row2][col2]
-            result.number3 = numberGrid[row3][col3]
-            result.number4 = numberGrid[row4][col4]
-            result.direction = "diagonally right and down"
-            result.row1 = row1
-            result.col1 = col1
-            result.row2 = row2
-            result.col2 = col2
-            result.row3 = row3
-            result.col3 = col3
-            result.row4 = row4
-            result.col4 = col4
-        }
+    resultCurrent = calculateProduct(row1, row2, row3, row4, col1, col2, col3, col4, "diagonally right and down")
+
+    if(resultCurrent.product > result.product){
+        result = resultCurrent
     }
 
-    row1 = row
+    // calculate the product of 4 numbers diagonally down and left and save it if product is higher than previous result
     row2 = row + 1
     row3 = row + 2
     row4 = row + 3
-    col1 = column
     col2 = column - 1
     col3 = column - 2
     col4 = column - 3
 
-    // check if we have 4 numbers diagonally down and left
+    resultCurrent = calculateProduct(row1, row2, row3, row4, col1, col2, col3, col4, "diagonally down and left")
 
-    if( checkGridValidity(row4, col4) ){
-        let numberProduct = numberGrid[row1][col1] * numberGrid[row2][col2] * numberGrid[row3][col3] * numberGrid[row4][col4]
-        
-        if(numberProduct > result.product){
-            result.product = numberProduct
-            result.number1 = numberGrid[row1][col1]
-            result.number2 = numberGrid[row2][col2]
-            result.number3 = numberGrid[row3][col3]
-            result.number4 = numberGrid[row4][col4]
-            result.direction = "diagonally down and left"
-            result.row1 = row1
-            result.col1 = col1
-            result.row2 = row2
-            result.col2 = col2
-            result.row3 = row3
-            result.col3 = col3
-            result.row4 = row4
-            result.col4 = col4
-        }
+    if(resultCurrent.product > result.product){
+        result = resultCurrent
     }
 
-    row1 = row
+    // calculate the product of 4 numbers diagonally left and up and save it if product is higher than previous result
     row2 = row - 1
     row3 = row - 2
     row4 = row - 3
-    col1 = column
-    col2 = column - 1
-    col3 = column - 2
-    col4 = column - 3
 
-    // check if we have 4 numbers diagonally left and up
-
-    if( checkGridValidity(row4, col4) ){
-        let numberProduct = numberGrid[row1][col1] * numberGrid[row2][col2] * numberGrid[row3][col3] * numberGrid[row4][col4]
-        if(numberProduct > result.product){
-            result.product = numberProduct
-            result.number1 = numberGrid[row1][col1]
-            result.number2 = numberGrid[row2][col2]
-            result.number3 = numberGrid[row3][col3]
-            result.number4 = numberGrid[row4][col4]
-            result.direction = "diagonally left and up"
-            result.row1 = row1
-            result.col1 = col1
-            result.row2 = row2
-            result.col2 = col2
-            result.row3 = row3
-            result.col3 = col3
-            result.row4 = row4
-            result.col4 = col4
-        }
-    }
+    resultCurrent = calculateProduct(row1, row2, row3, row4, col1, col2, col3, col4, "diagonally left and up")
 
     return result
-
 }
 
 function main(){
@@ -346,31 +234,36 @@ function main(){
     */
 
     let result = {"product": 0} // initial parameter
-    
+
     // loop through every row in the number grid
     for(let row = 0; row < numberGrid.length; row++){
         // loop through every column in the number grid
         for(let column = 0; column < numberGrid[row].length; column++){
             // return the highest product of 4 adjacent numbers in each of the 3 directions
-            let resultVertical = checkVertical(row, column)
-            let resultHorizontal = checkHorizontal(row, column)
-            let resultDiagonal = checkDiagonal(row, column)
+            let resultVertical = calculateProductVertical(row, column)
+            let resultHorizontal = calculateProductHorizontal(row, column)
+            let resultDiagonal = calculateProductDiagonal(row, column)
+
             // select the result with the highest product between all directions
             let checkFirst = resultVertical.product < resultHorizontal.product ? resultHorizontal : resultVertical
             let checkSecond = checkFirst.product < resultDiagonal.product ? resultDiagonal : checkFirst
+
             // store the highest selected product as a result if it is bigger than currently stored one
             if(checkSecond.product > result.product){
                 result = checkSecond
             }
         }
+
     }
-    
+
     // return results in a user friendly format
     console.log("Number grid:")
     console.log(formatGridForPrintout(result))
-    console.log("Largest product is found starting at row " + result.row1 + " and column " + result.col1 + " and moving " + result.direction)
+    console.log("Largest product is found starting at row " + result.row1 + " and column " + result.col1 + " and having direction " + result.direction + ".")
     console.log("The result is:\n" + result.number1 + " x " + result.number2 + " x " + result.number3 + " x " + result.number4 + " = " + result.product)
+
 }
 
 // run probem solution
+
 main()
