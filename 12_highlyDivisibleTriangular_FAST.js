@@ -10,7 +10,7 @@ number 9 has divisors 1, 3, 9. Since 3 is in the middle, we do not have to count
 
 When do we stop checking? When our found divisor is equal to quotient OR quotient is smaller than the divisor without remainder.
 
-Fast method. Took ~0.2 seconds to complete. The result is a number 76576500 with a total of 576 divisors. Total numbers checked is 12375.
+Result: took ~0.2 seconds to complete. The result is a number 76576500 with a total of 576 divisors. Total numbers checked is 12375.
 */
 
 let numberLimit = 15000 //to limit number of for() loops
