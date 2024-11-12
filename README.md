@@ -76,7 +76,7 @@ Simple, primitive solution: loop through every number and check if it is a prime
 
 I did some researching online and I implemented [Sieve of Eratosthenes](https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes) method. I read about it enough to understand the underlying principle of the method, but I chose not to check for actual formulas or code implementation and write my own implementation of the method.
 
-The idea is simple: for every prime number you find, it's multiples are automatically no longer prime numbers since they are divisible by more than just 1 and itself. For example if 3 is prime (divisible only by 1 and itself), then we can automatically flag further numbers as not primes: 3+3=6, 6+3=9, 9+3=12 and so on will all NOT be primes because they are divisible by more than just 1 and itself.
+The idea is simple: for every prime number you find, it's multiples are automatically no longer prime numbers since they are divisible by more than just 1 and itself. For example if 3 is prime (divisible only by 1 and itself), then we can automatically flag further numbers as not primes: 3+3=6, 6+3=9, 9+3=12 and so on will all NOT be primes because they are divisible by more than just 1 and itself (for ex. 12 is divisible by 1, by itself AND also by 3 and 4).
 
 The other tip I got is that we only have to check the numbers up to the square root of the upper limit of the range. For example if we are checking numbers from 1 to 20, then we only need to loop through all numbers that are smaller than square root of 20. By the time we get to that upper end of the range, we have already flagged all non-primes in the second half of the range.
 
@@ -104,10 +104,10 @@ I am super proud of this, because I came up with this trick by myself, without l
 
 The trick I used here is that for every divisor we find, there is going to be another divisor on the other end of the range (quotient from multiplication perspective), unless the divisor is right in the middle of the range (square root of the number we are checking). For example:
 
-Number 6 has divisors without remainder 1, 2, 3, 6. If we find 1, we can automatically count in quotient 6 as another divisor, because 1*6=6*1=6. Next we find 2, we can automatically count in quotient 3 as a divisor, because 2*3=3*2=6. There are no divisors in between those number that will be without remainder, so we no longer have to loop through every natural number up to the number we are checking, we only have to check half of the numbers. 
+Number 6 has divisors without remainder 1, 2, 3, 6. We start checking each number from start and immediately the first we find is 1, we can automatically count in quotient 6 as another divisor, because 1x6=6x1=6. Next we find 2, we can automatically count in quotient 3 as a divisor, because 2x3=3x2=6. There are no divisors in between those number that will be without remainder, so we no longer have to loop through every natural number up to the number we are checking, we only have to check half of the numbers. 
 
 Exception is when there is a divisor right in the middle of the range:
-number 9 has divisors 1, 3, 9. Since 3 is in the middle, we do not have to count in a quotient since it is the same number 3*3=9.
+number 9 has divisors 1, 3, 9. Since 3 is in the middle, we do not have to count in a quotient since it is the same number 3x3=9.
 
 When do we stop checking the numbers? When our found divisor is equal to quotient OR quotient is smaller than the divisor without remainder. In former case we reached the middle of the range we are checking, in latter we went past the middle point already. In both cases we chacked the first half of the number range and already accounted for all divisors in the second half of the range.
 
