@@ -136,3 +136,19 @@ There is a function that calculates Collatz sequence length and this function is
 There is a potential bug in the code that I left on purpose. The problem states, that while Collatz sequence always ends with number 1, this has not been proven yet. And my function that checks Collatz sequence, has a while() loop that only stops when Collatz sequence number becomes 1. While I have a hardcoded limiter set to loop through all number up to one million, this bug will not happen, since I have already tested all numbers up to one million, but if I removed the limiter and instead set it as a parameter for the code to be able to run the program with any number size, there might be a situation where we hit a number whose Collatz sequence never reaches 1 and we are stuck in an infinite while() loop.
 
 I could modify the while() loop condition to run until we go into below 1, this way if we reach anything that is <1, we will still have a condition that breaks the loop.
+
+### Problem #15
+
+First challenge where I failed to meet my own requirements! I could not figure out steps that would look logical to solve the issue and tried to check online for some hints, but accidentanlly stumbled upon a solution and therefore failed my challenge. Once you see it, you cannot "unsee" it anymore...
+
+I had some options that I came up with myself beforehand. One was adding a number in each position that indicated, how many previous positions are there that let you arrive at the current position. The other was a reverse: how many directions I can go to from my current position. But I could not get past those two ideas further to make sense. I think the closest one to solution was the third option: to use bitwise operations. The idea was quite simple: ones represented a step to the right and zeroes represented a step down. When you have a square grid, regardless which path you take, you ALWAYS must take even number of steps to the right and to the left. So, for example, on a 2x2 grid you have, one possible path would be Right, Down, Right, Down, which translates to 1010. So I figured that if I just generate every possible binary number, which had a length of 2 x grid size and just filter out unique ones, and then filter out all "false" results. The false results were either duplicates or numbers with uneven number of ones and zeroes. It seems to work, but, unfortunately, took way too long.
+
+So, the solution was kind of similar to what I was trying with counting number of possible paths I can take to arrive at current location. I just had to add up the numbers of previous positions, to figure out the number for current position. It is hard to explain in words, so I will try to use some ASCII art, lets say for a 2x2 grid. In a 2x2 grid the max number of steps to the right or down is 2, before you hit the edge, so below might look like I am showing a 3x3 grid, but it is for a 2x2 grid. And what you do is for every position, you simply add up the numbers that are in previous positions, that you can arrive from:
+
+|X|1|1|
+|1|2|3|
+|1|3|6|
+
+For example, the position in the middle of the grid, you have a total of 1+1=2 possible ways to get there: from X go right and down OR go down and right.
+
+Hopefully that makes sense.
