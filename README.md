@@ -152,3 +152,21 @@ So, the solution was kind of similar to what I was trying with counting number o
 For example, the position in the middle of the grid, you have a total of 1+1=2 possible ways to get there: from X go right and down OR go down and right.
 
 Hopefully that makes sense.
+
+### Problem #16
+
+Easy solution, just had to think about implementation. 2 to the power of n is basically just 2 multiplied by 2 n-times. Obviously, 2 to the power of 1000 is going to be very big number, so I used school grade multiplication: multiply each number digit by 2 and if the result is >9, then the tenth position is stored for the next digit(_ symbol is just for spacing numbers correctly under each other):
+
+173
+*
+__2
+=
+__6
+14_
+2__
+=
+346
+
+And this multiplication was repeated 1000 times. I used array to store each digit separately and initiated that array with 2, since that is the number we are starting. If number increased by one digit, that new digit would be added to the front of array.
+
+Once multiplication is done it is just as simple as adding up all number in the array.
