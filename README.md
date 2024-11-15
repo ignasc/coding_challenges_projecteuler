@@ -143,30 +143,38 @@ First challenge where I failed to meet my own requirements! I could not figure o
 
 I had some options that I came up with myself beforehand. One was adding a number in each position that indicated, how many previous positions are there that let you arrive at the current position. The other was a reverse: how many directions I can go to from my current position. But I could not get past those two ideas further to make sense. I think the closest one to solution was the third option: to use bitwise operations. The idea was quite simple: ones represented a step to the right and zeroes represented a step down. When you have a square grid, regardless which path you take, you ALWAYS must take even number of steps to the right and to the left. So, for example, on a 2x2 grid you have, one possible path would be Right, Down, Right, Down, which translates to 1010. So I figured that if I just generate every possible binary number, which had a length of 2 x grid size and just filter out unique ones, and then filter out all "false" results. The false results were either duplicates or numbers with uneven number of ones and zeroes. It seems to work, but, unfortunately, took way too long.
 
-So, the solution was kind of similar to what I was trying with counting number of possible paths I can take to arrive at current location. I just had to add up the numbers of previous positions, to figure out the number for current position. It is hard to explain in words, so I will try to use some ASCII art, lets say for a 2x2 grid. In a 2x2 grid the max number of steps to the right or down is 2, before you hit the edge, so below might look like I am showing a 3x3 grid, but it is for a 2x2 grid. And what you do is for every position, you simply add up the numbers that are in previous positions, that you can arrive from:
+So, the solution was kind of similar to what I was trying with counting number of possible paths I can take to arrive at current location. I just had to add up the numbers of previous positions, to figure out the number for current position. It is hard to explain in words, so I will try to use some ASCII art, lets say for a 2x2 grid. Below it might look like I am showing a 3x3 grid, but it is actually the vertices of 2x2 grid. For example, 1x1 grid (esentially a square) has 2 vertices on each edge, therefore it will be shown as 2x2 points. So therefore I am showing 2x2 grid as having 3x3 vertices and each letter below represents each vertex.
 
-|X|1|1|
-|1|2|3|
-|1|3|6|
+( A ) ( B ) ( C )
 
-For example, the position in the middle of the grid, you have a total of 1+1=2 possible ways to get there: from X go right and down OR go down and right.
+( D ) ( E ) ( F )
+
+( G ) ( H ) ( X )
+
+To get from point A to point B, you only have one way, therefore B=1, same case getting from A to D, therefore D=1. So, to fill in the rest of points, you add up possible paths that take you to positions right before the current one you are calculating. To get from point A to point E, you can go either A->B->E or A->D->E, so a total of two possible paths. And to get that number, you simply add up the numbers of the vertices that are one step BEFORE position E: B+D=E, therefore E=1+1=2. If the point is on the edge (G), then there is nothing to the left of it, so you add 0: G=0+D=0+1=1. And so on until you get to the last bit: H=E+G=2+1=3, F=C+E+1+2=3 and finally X=F+H=3+3=6. All numbers filled in are below:
+
+( 1 ) ( 1 ) ( 1 )
+
+( 1 ) ( 2 ) ( 3 )
+
+( 1 ) ( 3 ) ( 6 )
+
+Note about (A) position: there is really nothing that takes you to this position, since it is a starting point, but I used initial value of 1, because then my algorithm works as intented for adding up numbers for all other points. Otherwise I would have to hardcode the neighbouring points B and D to have values set to 1.
 
 Hopefully that makes sense.
 
 ### Problem #16
 
-Easy solution, just had to think about implementation. 2 to the power of n is basically just 2 multiplied by 2 n-times. Obviously, 2 to the power of 1000 is going to be very big number, so I used school grade multiplication: multiply each number digit by 2 and if the result is >9, then the tenth position is stored for the next digit(_ symbol is just for spacing numbers correctly under each other):
+Easy solution, just had to think about implementation. 2 to the power of n is basically just 2 multiplied by 2 n-times. Obviously, 2 to the power of 1000 is going to be very big number, so I used school grade multiplication: multiply each number digit by 2 and if the result is >9, then the tenth position is stored for the next digit. For example 184 x 2:
 
-173
-*
-__2
-=
-__6
-14_
-2__
-=
-346
+4 x 2 = 8
+
+8 x 2 = 16 -> 6 (1 is stored away to be added to next multiplication)
+
+1 x 2 + 1 = 3
+
+Answer: 184 x 2 = 364
 
 And this multiplication was repeated 1000 times. I used array to store each digit separately and initiated that array with 2, since that is the number we are starting. If number increased by one digit, that new digit would be added to the front of array.
 
-Once multiplication is done it is just as simple as adding up all number in the array.
+Once multiplication is done, it is just as simple as adding up all number in the array.
