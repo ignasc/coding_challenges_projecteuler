@@ -10,24 +10,24 @@ This is where I will be posting solutions to coding challenges, that are found i
 
 ## Index
 
-[Problem #00](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-00)
-[Problem #01](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-01)
-[Problem #02](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-02)
-[Problem #03](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-03)
-[Problem #04](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-04)
-[Problem #05](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-05)
-[Problem #06](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-06)
-[Problem #07](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-07)
-[Problem #08](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-08)
-[Problem #09](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-09)
-[Problem #10](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-10)
-[Problem #11](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-11)
-[Problem #12](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-12)
-[Problem #13](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-13)
-[Problem #14](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-14)
-[Problem #15](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-15)
-[Problem #16](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-16)
-[Problem #17](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-17)
+* [Problem #00](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-00) - replace numbers with fizz, buzz or fizzbuzz
+* [Problem #01](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-01) - multiples of 3 and 5
+* [Problem #02](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-02) - sum of even-valued Fibonacci numbers
+* [Problem #03](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-03) - largest prime factor of given number
+* [Problem #04](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-04) - largest palindrome of two 3-digit products
+* [Problem #05](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-05) - smallest number divisible by numbers 1 to 20
+* [Problem #06](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-06) - difference between square of sum and sum of squares
+* [Problem #07](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-07) - 10001st prime number
+* [Problem #08](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-08) - 13 adjacent numbers with highest product in a number sequence
+* [Problem #09](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-09) - product of a,b,c, when a^2+b^2+c^2=1000
+* [Problem #10](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-10) - sum of all prime numbers below two million
+* [Problem #11](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-11) - largest product of 4 adjacent numbers in a number grid
+* [Problem #12](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-12) - triangular number with more than 500 divisors
+* [Problem #13](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-13) - first 10 digits of the sum of 100-digit numbers
+* [Problem #14](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-14) - longest Collatz sequence under one million
+* [Problem #15](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-15) - number of possible routes in a 20x20 grid
+* [Problem #16](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-16) - sum of digits of the number 2^1000
+* [Problem #17](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-17) - count letters for number words
 
 Short summary and thoughts about each problem.
 
