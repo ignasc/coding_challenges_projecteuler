@@ -8,7 +8,26 @@ This is where I will be posting solutions to coding challenges, that are found i
 - Write clean, simple and readable code.
 - Where possible, try to write abstract code so it can solve the problem with different initial parameters.
 
-## The problems and short summary
+## Index
+
+[Problem #00](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-00)
+[Problem #01](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-01)
+[Problem #02](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-02)
+[Problem #03](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-03)
+[Problem #04](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-04)
+[Problem #05](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-05)
+[Problem #06](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-06)
+[Problem #07](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-07)
+[Problem #08](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-08)
+[Problem #09](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-09)
+[Problem #10](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-10)
+[Problem #11](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-11)
+[Problem #12](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-12)
+[Problem #13](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-13)
+[Problem #14](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-14)
+[Problem #15](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-15)
+[Problem #16](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-16)
+[Problem #17](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-17)
 
 Short summary and thoughts about each problem.
 
