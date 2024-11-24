@@ -10,7 +10,7 @@ This is where I will be posting solutions to coding challenges, that are found i
 
 ## Index
 
-* [Problem #00](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-00) - replace numbers with fizz, buzz or fizzbuzz
+* [Problem #00](#problem-00) - replace numbers with fizz, buzz or fizzbuzz
 * [Problem #01](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-01) - multiples of 3 and 5
 * [Problem #02](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-02) - sum of even-valued Fibonacci numbers
 * [Problem #03](https://github.com/ignasc/coding_challenges_projecteuler?tab=readme-ov-file#problem-03) - largest prime factor of given number
