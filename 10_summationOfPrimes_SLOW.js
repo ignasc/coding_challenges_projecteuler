@@ -1,4 +1,12 @@
-//NOTE: slow method. Took 476 seconds on my machine to complete.
+/*
+The sum of all prime numbers below 10 is 2+3+5+7=17
+
+What is the sum of all prime numbers below two million?
+
+NOTE: slow method. Took 476 seconds on my machine to complete.
+
+Result: 142913828922
+*/
 
 let numberOfDataPoints = 2000000
 let resultSum = 0
