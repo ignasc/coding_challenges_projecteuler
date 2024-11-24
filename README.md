@@ -178,3 +178,9 @@ Answer: 184 x 2 = 364
 And this multiplication was repeated 1000 times. I used array to store each digit separately and initiated that array with 2, since that is the number we are starting. If number increased by one digit, that new digit would be added to the front of array.
 
 Once multiplication is done, it is just as simple as adding up all number in the array.
+
+### Problem #17
+
+Once again, a relatively simple problem, just implementation was a bit harder to do. I had to figure out, how to “write” the numbers out in words. Easiest way for me was to simply loop through each digit of a given number and add total count based on those digits, whether they are in thousands, hundreds, tens or single digit positions.
+
+Also, the counting for the word “and” is optional and can be set to 0 as I added it as variable, rather than hardcoding the number 3.
