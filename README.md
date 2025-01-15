@@ -128,7 +128,7 @@ Number 6 has divisors without remainder 1, 2, 3, 6. We start checking each numbe
 Exception is when there is a divisor right in the middle of the range:
 number 9 has divisors 1, 3, 9. Since 3 is in the middle, we do not have to count in a quotient since it is the same number 3x3=9.
 
-When do we stop checking the numbers? When our found divisor is equal to quotient OR quotient is smaller than the divisor without remainder. In former case we reached the middle of the range we are checking, in latter we went past the middle point already. In both cases we chacked the first half of the number range and already accounted for all divisors in the second half of the range.
+When do we stop checking the numbers? When our found divisor is equal to quotient OR quotient is smaller than the divisor without remainder. In former case we reached the middle of the range we are checking, in latter we went past the middle point already. In both cases we checked the first half of the number range and already accounted for all divisors in the second half of the range.
 
 ### Problem #13
 
@@ -192,7 +192,7 @@ Easy solution, just had to think about implementation. 2 to the power of n is ba
 
 1 x 2 + 1 = 3
 
-Answer: 184 x 2 = 364
+Answer: 184 x 2 = 368
 
 And this multiplication was repeated 1000 times. I used array to store each digit separately and initiated that array with 2, since that is the number we are starting. If number increased by one digit, that new digit would be added to the front of array.
 
