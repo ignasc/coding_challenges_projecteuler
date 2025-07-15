@@ -10,6 +10,9 @@ This is where I will be posting solutions to coding challenges, that are found i
 
 ## Index
 
+Short summary and thoughts about each problem.
+## Warning, contains spoilers on how to solve it!
+
 * [Problem #00](#problem-00) - replace numbers with fizz, buzz or fizzbuzz
 * [Problem #01](#problem-01) - multiples of 3 and 5
 * [Problem #02](#problem-02) - sum of even-valued Fibonacci numbers
@@ -28,10 +31,6 @@ This is where I will be posting solutions to coding challenges, that are found i
 * [Problem #15](#problem-15) - number of possible routes in a 20x20 grid
 * [Problem #16](#problem-16) - sum of digits of the number 2^1000
 * [Problem #17](#problem-17) - count letters for number words
-
-Short summary and thoughts about each problem.
-
-## Warning, contains spoilers on how to solve it!
 
 ### Problem #00
 
